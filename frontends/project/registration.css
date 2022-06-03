@@ -64,7 +64,6 @@
 }
 
 .flex-col {
-  align-items: center;
   align-self: flex-end;
   display: flex;
   flex-direction: column;
@@ -149,19 +148,27 @@
   width: 40px;
 }
 
-.enter-your-email-address {
-  color: 
-#23189e9c;
-  font-family: var(--font-family-poppins);
-  font-size: var(--font-size-s2);
-  font-weight: 500;
+input[type="text"]{
   letter-spacing: 0;
   margin-bottom: 2px;
   margin-left: 75px;
   min-height: 30px;
   min-width: 251px;
+  
+}
+input[type="text"]::placeholder {
+  padding-bottom:.5em;
+  color: #23189e9c;
+  font-family: var(--font-family-poppins);
+  font-size: var(--font-size-s2);
+  font-weight: 500;
+  border: none;
+  border-bottom: 1px solid #23189e9c;
 }
 
+input {
+  border:none
+}
 .line-3 {
   align-self: flex-end;
   height: 3px;

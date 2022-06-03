@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,6 +30,11 @@ Route::get('/admin', function () {
 Route::get('/reservation', function () {
     return view('client/reservation');
 });
+
+Route::get('/dummy_login', function () {
+    return view('auth/dummy_login');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('/admin/users',  UserController::class);

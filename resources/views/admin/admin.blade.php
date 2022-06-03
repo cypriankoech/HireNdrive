@@ -209,37 +209,31 @@
                     </h2>
                     <table class="table">
                         <thead class="thead-dark">
+
+
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">DOB</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">ID No.</th>
+                                <th scope="col">created at</th>
+                                <th scope="col">updated at</th>
                                 <th scope="col">Options</th>
-
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">James Kariuki</th>
-                                <td>20/04/2002</td>
-                                <td>jameskariuki@gmail.com</td>
-                                <td>12345687</td>
-                                <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">James Kariuki</th>
-                                <td>20/04/2002</td>
-                                <td>jameskariuki@gmail.com</td>
-                                <td>12345687</td>
-                                <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">James Kariuki</th>
-                                <td>20/04/2002</td>
-                                <td>jameskariuki@gmail.com</td>
-                                <td>12345687</td>
-                                <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
-                            </tr>
+                            @if (count($users) > 0)
+                                @foreach ($users as $user)
+                                    <tr>
+                                        <th scope="row">{{$user['name']}}</th>
+                                        <td>{{$user['dob']}}</td>
+                                        <td>{{$user['email']}}</td>
+                                        <td>{{$user['created_at']}}</td>
+                                        <td>{{$user['updated_at']}}</td>
+                                        <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
+                                    </tr>
+                                @endforeach
+
+                            @endif
                         </tbody>
                     </table>
 
