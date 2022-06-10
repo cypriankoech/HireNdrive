@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/checkout', function () {
     return view('client/checkout');
 });
@@ -36,5 +32,5 @@ Route::get('/dummy_login', function () {
 });
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/admin/users',  UserController::class);
