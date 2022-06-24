@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -14,23 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
+Route::resource('/admin/users',  UserController::class);
+Route::get('/admin', [UserController::class, 'index']);
+
 Route::get('/checkout', function () {
     return view('client/checkout');
 });
 
-Route::get('/admin', function () {
-    return view('admin/admin');
+Route::get('/pay', function () {
+    return view('client/pay');
 });
-
 
 Route::get('/reservation', function () {
     return view('client/reservation');
 });
-
-Route::get('/dummy_login', function () {
-    return view('auth/dummy_login');
-});
-Auth::routes();
-
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/admin/users',  UserController::class);

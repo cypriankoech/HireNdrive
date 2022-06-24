@@ -1,8 +1,74 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app')
 
 @section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
 
-<section class="home" id="home">
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    {{ __('You are logged in!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <title>Hire n' Drive</title>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo"><img src="images/download.png" alt=""></a>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#rental">Book Now</a></li>
+            <li><a href="#locations">Locations</a></li>
+            <li><a href="#tours">Tours</a></li>
+            <li><a href="#contacts">Contacts</a></li>
+        </ul>
+        <div class="header-btn">
+            @guest
+            @if (Route::has('login'))
+            <a href="{{ route('login') }}" class="register">{{ __('Register') }}</a>
+            @endif
+
+            @if (Route::has('register'))
+            <a href="{{ route('login') }}" class="login">{{ __('Login') }}</a>
+            @endif
+            @else
+            <a href="#" class="register">{{ Auth::user()->name }}</a>
+            <a class="login" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
+            </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+            @endguest
+        </div>
+    </header>
+    <section class="home" id="home">
         <div class="text">
             <h1><span>Looking</span> for <br>a car to rent</h1>
             <p>Try out our latest models from all brands to suit your needs at your own convience</p>
@@ -107,9 +173,9 @@
                 <p>Enjoy unbeatably affordable car hire Kenya services in over 160 pick up locations spread all over this beautiful country. </p>
                 <p>Choose from over 150 vehicles, vans, buses, shuttles, pick-ups, double-cabins, 4WD and more.
                     We guarantee 24 hours personalized car rental support, very affordable car hire Kenya prices, over 160 car rental
-                    pick-up and drop-off locations and clean well maintained vehicles to each of our car hire Kenya service clients. <br>    
+                    pick-up and drop-off locations and clean well maintained vehicles to each of our car hire Kenya service clients. <br>
                     With over 15 years track record as a reliable car rental company, simple car rental terms, real time user reviews on
-                    facebook, we guarantee the best car rental experience in Kenya.  Call us on +254 722 417475 or email us on
+                    facebook, we guarantee the best car rental experience in Kenya. Call us on +254 722 417475 or email us on
                     info@hireddrive.com. Affordable car hire Kenya services: select from saloon cars, sedans, small 4X4s, and more. Call or email today.</p>
             </div>
         </div>
@@ -171,14 +237,17 @@
         <div class="social">
             <a href=""><i class='bx bxl-facebook'></i></a>
             <a href=""><i class='bx bxl-trip-advisor'></i></a>
-            <a href=""><i class='bx bxl-twitter' ></i></a>
-            <a href=""><i class='bx bxl-google-plus' ></i></a>
-            <a href=""><i class='bx bxl-youtube' ></i></a>
-            <a href=""><i class='bx bxl-linkedin' ></i></a>
+            <a href=""><i class='bx bxl-twitter'></i></a>
+            <a href=""><i class='bx bxl-google-plus'></i></a>
+            <a href=""><i class='bx bxl-youtube'></i></a>
+            <a href=""><i class='bx bxl-linkedin'></i></a>
             <a href=""><i class='bx bxl-pinterest-alt'></i></a>
-            <a href=""><i class='bx bxl-tumblr' ></i></a>
+            <a href=""><i class='bx bxl-tumblr'></i></a>
 
         </div>
     </section>
     <script src="home.js"></script>
-@endsection
+
+</body>
+
+</html>

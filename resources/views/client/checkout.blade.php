@@ -26,6 +26,7 @@
   <title>Checkout</title>
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css' />
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
+   <link rel="stylesheet" type="text/css" href="{{ asset('css/checkout.css') }}" media="screen" /> 
 </head>
 
 <body>
@@ -82,22 +83,39 @@
            </h7>
             
           </div>
-          <h6 class="text-center lead">Select Payment Mode</h6>
-          <div class="form-group">
-            <select name="pmode" class="form-control">
-              <option value="" selected disabled>-Select Payment Mode-</option>
-              <option value="cod">Cash On Pickup</option>
-              <option value="netbanking">Mobile Money</option>
-              <option value="cards">Debit/Credit Card</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <input type="submit" name="submit" value="Place Order" class="btn btn-danger btn-block">
+          <h6 class="text-center lead"><b><i>Select Payment Mode</i></b></h6>
+          <div class="dropdown">  
+   
+  <div id="myDropdown1" class="dropdown-content">  
+    <a href="#Cash" onclick="Cash()"><span style="color:black">Cash on Pickup</a> <br>
+    <a href="#Mobile" onclick="Mobile()"><span style="color:black">Mobile Money</a> <br> 
+    <a href="#Card" onclick="Card()"><span style="color:black">Debit/Credit Card</a>  
+    
+  </div>  
+</div> 
+<script>
+function programmingList() {  
+  document.getElementById("myDropdown1").classList.toggle("show");  
+}   
+function Cash() {  
+   window.location.replace("End.php");  
+}  
+function Mobile() {  
+   window.location.replace("Pay.php");  
+}  
+function Card() {  
+   window.location.replace("Pay.php");  
+}  
+</script>
+         <!--  <div class="form-group">
+            
+            <input type="submit" name="submit" value="Place Order" class="btn btn-danger btn-block"> 
           </div>
         </form>
-      </div>
+      </div> -->
     </div>
   </div>
+  
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js'></script>
