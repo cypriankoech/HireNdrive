@@ -249,7 +249,6 @@
                         <div class="car-image-container form-control">
                             <h3>Image</h3>
                             <img src="images/plus.png" alt="" class="form-control m-2 p-2">
-<<<<<<< HEAD
                             <input type="file" name="car_image" id="car-image">
                         </div>
                         <div class="car-details form-control mx-2">
@@ -261,20 +260,6 @@
                                 <i class="fa-solid fa-plus"></i>
                                 Add Vehicle
                             </button>
-=======
-                            <input type="file" name="car_image" id="image">
-                        </div>
-                        
-                        <div class="car-details form-control mx-2">
-                            <input type="text" placeholder="Model" id="model" class="form-control my-2">
-                            <input type="text" placeholder="Registration No." id="RegNo" class="form-control my-2">
-                            <input type="text" placeholder="Pricing" id="pricing" class="form-control my-2">
-                            <input type="text" placeholder="Type" id="type" class="form-control my-2">
-                            <input type= " submit" value="Add Vehicle" class="btn btn-success">
-                                <!-- <i class="fa-solid fa-plus"></i>
-                                Add Vehicle
-                            > -->
->>>>>>> master
                         </div>
                     </div>
                     <h2 class="h2">

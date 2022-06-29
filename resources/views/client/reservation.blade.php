@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 @extends('home')
-=======
->>>>>>> master
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,15 +19,10 @@
 <!-- BODY -->
 
 <body>
-<<<<<<< HEAD
 @section('content')
 	<section class="reservation_section" style="padding:50px 0px" id="reserve">
 		<div class="container">
 		
-=======
-	<section class="reservation_section" style="padding:50px 0px" id="reserve">
-		<div class="container">
->>>>>>> master
 			<div class="row">
 				<div class="col-md-5"></div>
 				<div class="col-md-7">
@@ -76,12 +68,8 @@
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
+
 		@endsection
-	
-=======
-	</section>
->>>>>>> master
 </body>
 
 </html>

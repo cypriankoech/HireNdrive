@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @extends('layouts.app')
-=======
-<!-- @extends('layouts.app')
->>>>>>> master
 
 @section('content')
 <div class="container">
@@ -74,8 +70,4 @@
         </div>
     </div>
 </div>
-<<<<<<< HEAD
 @endsection --
-=======
-@endsection -->
->>>>>>> master

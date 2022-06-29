@@ -17,7 +17,6 @@ use App\Http\Controllers\Admin\UserController;
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-<<<<<<< HEAD
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');;
 
 Route::resource('/admin/users',  UserController::class);
@@ -34,21 +33,3 @@ Route::get('/pay', function () {
 Route::get('/reservation', function () {
     return view('client/reservation');
 })->name('reservation');
-=======
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
-
-Route::resource('/admin/users',  UserController::class);
-Route::get('/admin', [UserController::class, 'index']);
-
-Route::get('/checkout', function () {
-    return view('client/checkout');
-});
-
-Route::get('/pay', function () {
-    return view('client/pay');
-});
-
-Route::get('/reservation', function () {
-    return view('client/reservation');
-});
->>>>>>> master
