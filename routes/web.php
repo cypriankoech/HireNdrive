@@ -17,19 +17,19 @@ use App\Http\Controllers\Admin\UserController;
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');;
 
 Route::resource('/admin/users',  UserController::class);
-Route::get('/admin', [UserController::class, 'index']);
+Route::get('/admin', [UserController::class, 'index'])->name('index','admin');
 
 Route::get('/checkout', function () {
     return view('client/checkout');
-});
+})->name('checkout');
 
 Route::get('/pay', function () {
     return view('client/pay');
-});
+})->name('pay');
 
 Route::get('/reservation', function () {
     return view('client/reservation');
-});
+})->name('reservation');

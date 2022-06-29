@@ -14,7 +14,6 @@ class UserController extends Controller
      */
     public function index()
     {
-        print_r(User::all());
         return view('admin.admin',['users' => User::all()]);
     }
 
