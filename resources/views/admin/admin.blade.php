@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hired Drive</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
 
     <!-- hard css -->
     <!-- hii siajtumia -->
@@ -158,7 +159,8 @@
             flex-wrap: nowrap;
         }
     </style>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <title>Hired Drive</title>
 </head>
 
 <body>
@@ -191,7 +193,7 @@
 
             </div>
             <div class="logout-option p-2">
-                <button class="btn btn-primary logout-btn">
+                <button class="btn btn-primary logout-btn" onclick=window.location.href="{{ route('home') }}">
                     <a href="#">
                         <i class="fa-solid fa-arrow-right-from-bracket"></i> Log Out
                     </a>
@@ -229,7 +231,9 @@
                                 <td>{{$user['email']}}</td>
                                 <td>{{$user['created_at']}}</td>
                                 <td>{{$user['updated_at']}}</td>
-                                <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
+
+                                <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can deleteUser" data-id="{{ $user['id'] }}"></i></button></td>
+                                <!-- route('cars.show', ['car' => $car['id']]) -->
                             </tr>
                             @endforeach
 
@@ -287,7 +291,7 @@
                                     <td>{{$car['pricing']}}</td>
                                     <td>{{$car['type']}}</td>
                                     <td>
-                                        <bucan class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                                        <bucan class="btn btn-danger"><i class="fa-solid fa-trash-can deleteCar" data-id="{{ $car['id'] }}"></i></button>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -304,6 +308,47 @@
         </div>
     </div>
     <script>
+        $(document).ready(function () {
+            $(".deleteUser").click(function() {
+               
+                var id = $(this).data("id");
+                var token = $("meta[name='csrf-token']").attr("content");
+                url = "/admin/users/"+id
+
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    data: {
+                        "id": id,
+                        "_token": token,
+                    },
+                    success: function() {
+                        window.location.reload();
+                    }
+                });
+
+            });
+
+            $(".deleteCar").click(function() {
+                
+                var id = $(this).data("id");
+                var token = $("meta[name='csrf-token']").attr("content");
+                url = "cars/"+id
+
+                $.ajax({
+                    url: url,
+                    type: 'DELETE',
+                    data: {
+                        "id": id,
+                        "_token": token,
+                    },
+                    success: function() {
+                        window.location.reload();
+                    }
+                });
+
+            });
+        });
         var user_ds = document.getElementById("users-display");
         var car_ds = document.getElementById("cars-display");
 

@@ -18,7 +18,7 @@ use App\Http\Controllers\Admin\CarController;
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');;
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/');
 
 Route::resource('/admin/users',  UserController::class);
 
