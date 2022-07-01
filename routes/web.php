@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CarController;
+use App\Http\Controllers\Admin\BookingController;
 
 
 /*
@@ -23,6 +24,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('/'
 Route::resource('/admin/users',  UserController::class);
 
 Route::resource('cars',  CarController::class);
+Route::resource('booking',  BookingController::class);
 
 Route::get('/admin', [UserController::class, 'index'])->name('index','admin');
 

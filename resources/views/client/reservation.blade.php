@@ -59,6 +59,8 @@
 			</div>
 			<div>
 				<div class="form-group">
+					<input type="hidden" name="carID" value="{{ $car['id'] }}">
+					<input type="hidden" name="clientID" value="{{ Auth::user()->id }}">
 					<label for="pickup_location">Pickup Location : </label>
 					<input type="text" class="form-control" name="pickup_location" placeholder="input location">
 
@@ -79,11 +81,13 @@
 				</div>
 				<br>
 				<br>
+				
 				<div class="form-group">
 					<label for="return_date">Return Date :</label>
 					<input type="date" name="return_date" class="form-control" v-model='return_date'>
 
 				</div>
+
 				<br>
 				<br>
 				<button type="submit" class="sbmt-bttn" name="reserve_car">
