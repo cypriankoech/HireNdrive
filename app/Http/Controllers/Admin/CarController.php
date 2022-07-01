@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use App\Models\cars;
+use App\Http\Requests\CarFormRequest;
+use App\Http\Controllers\Controller;
+use App\Models\Car;
 
 class CarController extends Controller
 {
@@ -12,10 +14,12 @@ class CarController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(CarFormRequest $request)
     {
-        $cars = cars::all();
-        return view ('admin.admin')->with('cars', $cars);
+        $data = $request->validated();
+        Car::create($data);
+        return redirect('admin')->with('flash_message', 'car added successfully');
+//
     }
 
     /**
@@ -25,7 +29,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        return view('admin.admin');
+        //
     }
 
     /**
@@ -34,14 +38,11 @@ class CarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CarFormRequest $request)
     {
-        $requestData =$request->all();
-        $fileName =time().$request->file('image')->getClientOriginalName();
-        $path = $request->file('image')->storeAs('images', $fileName, 'public');
-        $requestData["image"]= '/storage/'.$path;
-        cars::create($requestData);
-        return redirect('cars')->with('flash_message', 'car added successfully');
+        $data = $request->validated();
+        Car::create($data);
+        return redirect('admin')->with('flash_message', 'car added successfully');
     }
 
     /**
@@ -50,10 +51,16 @@ class CarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Car $car)
     {
-        //
+        return view('client/reservation', ['car' => $car]);
+        
     }
+    
+    // public function reserve(Car $car)
+    // {
+    //     return redirect('reservation', ['car' => $car]);
+    // }
 
     /**
      * Show the form for editing the specified resource.

@@ -222,16 +222,16 @@
                         </thead>
                         <tbody>
                             @if (count($users) > 0)
-                                @foreach ($users as $user)
-                                    <tr>
-                                        <th scope="row">{{$user['name']}}</th>
-                                        <td>{{$user['dob']}}</td>
-                                        <td>{{$user['email']}}</td>
-                                        <td>{{$user['created_at']}}</td>
-                                        <td>{{$user['updated_at']}}</td>
-                                        <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
-                                    </tr>
-                                @endforeach
+                            @foreach ($users as $user)
+                            <tr>
+                                <th scope="row">{{$user['name']}}</th>
+                                <td>{{$user['dob']}}</td>
+                                <td>{{$user['email']}}</td>
+                                <td>{{$user['created_at']}}</td>
+                                <td>{{$user['updated_at']}}</td>
+                                <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
+                            </tr>
+                            @endforeach
 
                             @endif
                         </tbody>
@@ -240,70 +240,66 @@
 
                 </div>
             </div>
-            <div class="cars-table-holder form-control mt-0 p-4" id="cars-display">
-                <h2 class="h1 text-center">
-                    Vehicle Management
-                </h2>
-                <div class="users-table my-4">
-                    <div class="vehicle-handling m-4">
-                        <div class="car-image-container form-control">
-                            <h3>Image</h3>
-                            <img src="images/plus.png" alt="" class="form-control m-2 p-2">
-                            <input type="file" name="car_image" id="car-image">
-                        </div>
-                        <div class="car-details form-control mx-2">
-                            <input type="text" placeholder="Model" class="form-control my-2">
-                            <input type="text" placeholder="Registration No." class="form-control my-2">
-                            <input type="text" placeholder="Pricing" class="form-control my-2">
-                            <input type="text" placeholder="Type" class="form-control my-2">
-                            <button class="btn btn-primary w-100">
-                                <i class="fa-solid fa-plus"></i>
-                                Add Vehicle
-                            </button>
-                        </div>
-                    </div>
-                    <h2 class="h2">
-                        Vehicles
+            <form action="{{ route('cars.index') }}">
+                @csrf
+                <div class="cars-table-holder form-control mt-0 p-4" id="cars-display">
+                    <h2 class="h1 text-center">
+                        Vehicle Management
                     </h2>
-                    <table class="table">
-                        <thead class="thead-dark">
-                            <tr>
-                                <th scope="col">Model</th>
-                                <th scope="col">Registration No</th>
-                                <th scope="col">Pricing</th>
-                                <th scope="col">Type</th>
-                                <th scope="col">Options</th>
+                    <div class="users-table my-4">
+                        <div class="vehicle-handling m-4">
+                            <div class="car-image-container form-control">
+                                <h3>Image</h3>
+                                <img src="images/plus.png" alt="" class="form-control m-2 p-2">
+                                <input type="file" name="image" id="car-image">
+                            </div>
+                            <div class="car-details form-control mx-2">
+                                <input name="model" type="text" placeholder="Model" class="form-control my-2">
+                                <input name="RegNo" type="text" placeholder="Registration No." class="form-control my-2">
+                                <input name="pricing" type="text" placeholder="Pricing" class="form-control my-2">
+                                <input name="type" type="text" placeholder="Type" class="form-control my-2">
+                                <button type="submit" class="btn btn-primary w-100">
+                                    <i class="fa-solid fa-plus"></i>
+                                    Add Vehicle
+                                </button>
+                            </div>
+                        </div>
+                        <h2 class="h2">
+                            Vehicles
+                        </h2>
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Model</th>
+                                    <th scope="col">Registration No</th>
+                                    <th scope="col">Pricing</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Options</th>
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">Mercedes Benz</th>
-                                <td>KCJ 435H</td>
-                                <td>$ 5,000</td>
-                                <td>Luxury</td>
-                                <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Mercedes Benz</th>
-                                <td>KCJ 435H</td>
-                                <td>$ 5,000</td>
-                                <td>Luxury</td>
-                                <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">Mercedes Benz</th>
-                                <td>KCJ 435H</td>
-                                <td>$ 5,000</td>
-                                <td>Luxury</td>
-                                <td><button class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (count($cars) > 0)
+                                @foreach ($cars as $car)
+                                <tr>
+                                    <th scope="row">{{$car['model']}}</th>
+                                    <td>{{$car['RegNo']}}</td>
+                                    <td>{{$car['pricing']}}</td>
+                                    <td>{{$car['type']}}</td>
+                                    <td>
+                                        <bucan class="btn btn-danger"><i class="fa-solid fa-trash-can"></i></button>
+                                    </td>
+                                </tr>
+                                @endforeach
+
+                                @endif
+                            </tbody>
+                        </table>
 
 
+                    </div>
                 </div>
-            </div>
+            </form>
 
         </div>
     </div>

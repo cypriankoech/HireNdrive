@@ -1,11 +1,36 @@
 <script src="https://checkout.flutterwave.com/v3.js"></script>
 <link rel="stylesheet" type="text/css" href="{{ asset('css/pay.css') }}" media="screen" />
-
+<title>Payment</title>
 <form>
+  <center>
     <div>
-    Your order is KES54,600
-  </div>
-  <button type="button" id="start-payment-button" onclick="makePayment()">Pay Now</button>
+      <h3><b><i>Your order is<span style="color:purple;"> KES 54,600</span></i></b></h3>
+      <button type="button" id="start-payment-button" onclick="makePayment()">Pay Now</button><br>
+      <img src="{{ asset('images/HIRE N DRIVE.png') }}">
+    </div>
+    <link rel="icon" type="image/png" href="{{ asset('images/download.png') }}">
+    <style>
+      body {
+        background-image: url("/images/bg.jpg");
+        background-size: cover;
+        text-decoration-color: whitesmoke;
+      }
+
+      div {
+        width: 300px;
+        height: 210px;
+        background-color: white;
+        text-align: center;
+        padding: 20px;
+        padding-bottom: 20px;
+      }
+
+      img {
+        width: 115px;
+        height: 115px;
+      }
+    </style>
+  </center>
 </form>
 <script>
   function makePayment() {
@@ -28,7 +53,7 @@
       customizations: {
         title: "HireNDrive",
         description: "Payment for your hired car",
-        logo: "c:\Users\nyang\downloads\logo.png",
+        logo: "download.png",
       },
     });
   }

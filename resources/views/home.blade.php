@@ -7,22 +7,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    <title>Hire n' Drive</title>
+    @yield('head')
+    <title>@section('title', "Hire n' Drive")</title>
 </head>
 
 <body>
+    @section('header')
+
     <header>
-        <a href="#" class="logo"><img src="images/download.png" alt=""></a>
+        <a href="{{ asset('storage/file.txt') }}" class="logo"><img src="images/download.png" alt=""></a>
 
         <div class="bx bx-menu" id="menu-icon"></div>
 
         <ul class="navbar">
-
             <li><a href="{{ route('home') }}">Home</a></li>
-            <li><a href="{{ route('reservation') }}">Book Now</a></li>
-            <li><a href="#locations">Locations</a></li>
-            <li><a href="#tours">Tours</a></li>
-            <li><a href="#contacts">Contacts</a></li>
         </ul>
         <div class="header-btn">
             @guest
@@ -46,6 +44,7 @@
             @endguest
         </div>
     </header>
+    @show
     @section('content')
     <section class="home" id="home">
         <div class="text">
@@ -86,56 +85,23 @@
             <h1>Discover Our Best Deals <br> From All Car Ranges</h1>
         </div>
         <div class="services-container">
+            @if (count($cars) > 0)
+            @foreach ($cars as $car)
             <div class="box">
                 <div class="box-img">
-                    <img src="images/4x4.png" alt="">
+                    <img src="{{ $car['image']}}" alt="">
                 </div>
-                <p>2020</p>
-                <h3>4X4 V8 Prado</h3>
-                <h2>KSH 100,000 | KSH 5,000 <span>/month</span></h2>
-                <a href="#" class="btn">Hire Now</a>
+                <p>2022</p>
+                <h3>{{ $car['model']}}</h3>
+                <h2>KSH {{ number_format($car['pricing']) }} <span>/month</span></h2>
+                <!-- <input type="hidden" name="car_id" value="{{ $car['id']}}"> -->
+                <a href="{{ route('cars.show', ['car' => $car['id']]) }}" onclick="document.getElementById('myform').submit()" class="btn">Hire Now</a>
             </div>
 
-            <div class="box">
-                <div class="box-img">
-                    <img src="images/7_seater.png" alt="">
-                </div>
-                <p>2020</p>
-                <h3>4X4 V8 Prado</h3>
-                <h2>KSH 100,000 | KSH 5,000 <span>/month</span></h2>
-                <a href="#" class="btn">Hire Now</a>
-            </div>
-
-            <div class="box">
-                <div class="box-img">
-                    <img src="images/compact.png" alt="">
-                </div>
-                <p>2020</p>
-                <h3>4X4 V8 Prado</h3>
-                <h2>KSH 100,000 | KSH 5,000 <span>/month</span></h2>
-                <a href="#" class="btn">Hire Now</a>
-            </div>
-
-            <div class="box">
-                <div class="box-img">
-                    <img src="images/double.png" alt="">
-                </div>
-                <p>2020</p>
-                <h3>4X4 V8 Prado</h3>
-                <h2>KSH 100,000 | KSH 5,000 <span>/month</span></h2>
-                <a href="#" class="btn">Hire Now</a>
-            </div>
-
-            <div class="box">
-                <div class="box-img">
-                    <img src="images/saloon.png" alt="">
-                </div>
-                <p>2020</p>
-                <h3>4X4 V8 Prado</h3>
-                <h2>KSH 100,000 | KSH 5,000 <span>/month</span></h2>
-                <a href="#" class="btn">Hire Now</a>
-            </div>
+            @endforeach
+            @endif
         </div>
+        
     </section>
 
     <section class="about" id="about">
@@ -226,7 +192,7 @@
         </div>
     </section>
     <script src="home.js"></script>
-@show
+    @show
 </body>
 
 </html>
