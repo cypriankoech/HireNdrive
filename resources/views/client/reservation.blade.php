@@ -90,12 +90,17 @@
 
 				<br>
 				<br>
-				<button type="submit" class="sbmt-bttn" name="reserve_car">
+				<button id="to-checkout" type="submit" onclick=window.location.href="{{ route('checkout') }}" class="sbmt-bttn to-checkout" name="reserve_car">
 					<h5>Book now</h5>
 				</button>
 			</div>
 		</form>
 	</div>
 </body>
+<script>
+	document.getElementById("to-checkout").addEventListener("click", function(event){
+  event.preventDefault()
+});
 
+</script>
 </html>

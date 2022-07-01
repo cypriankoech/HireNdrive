@@ -104,15 +104,15 @@ $sql = "SELECT CONCAT(product_name, '(',qty,')') AS ItemQty, total_price FROM ca
             }
 
             function Cash() {
-              window.location.replace("End.php");
+              window.location.replace("{{ route('end') }}");
             }
 
             function Mobile() {
-              window.location.replace("Pay.php");
+              window.location.replace("{{ route('pay') }}");
             }
 
             function Card() {
-              window.location.replace("Pay.php");
+              window.location.replace("{{ route('pay') }}");
             }
           </script>
           <!--  <div class="form-group">

@@ -36,6 +36,10 @@ Route::get('/pay', function () {
     return view('client/pay');
 })->name('pay');
 
+Route::get('/end', function () {
+    return view('/end');
+})->name('end');
+
 Route::get('/reservation', function () {
     return view('client/reservation');
 })->name('reservation');

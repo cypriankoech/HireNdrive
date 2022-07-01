@@ -1,3 +1,4 @@
+@if (Auth::user()->name == "james brian")
 <!DOCTYPE html>
 <html lang="en">
 
@@ -168,7 +169,7 @@
         <div class="options-container w-25">
             <div class="container header">
                 <img src="images/user.png" alt="" class="admin-img">
-                <h3>Admin</h3>
+                <h3>{{ Auth::user()->name }}</h3>
             </div>
             <div class="options-list">
                 <ul>
@@ -365,3 +366,7 @@
 </body>
 
 </html>
+@else 
+<h1> This page is only accessible by the Admin</h1>
+@endif
+
